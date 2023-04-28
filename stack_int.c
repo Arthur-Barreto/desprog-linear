@@ -24,16 +24,19 @@ void stack_int_delete(stack_int **_s) {
 }
 
 int stack_int_empty(stack_int *s) {
-    return 0;
+    return s->size == 0;
 }
 
 int stack_int_full(stack_int *s) {
-    return 0;
+    return s->capacity == s->size;
 }
 
 void stack_int_push(stack_int *s, int value) {
+    s->data[s->size] = value; // escreve o novo valor no novo topo
+    s->size++;                // move o topo para a direita (sobe)
 }
 
 int stack_int_pop(stack_int *s) {
-    return 0;
+    s->size--;               // move o topo para a esquerda (desce)
+    return s->data[s->size]; // devolve o valor do topo atual
 }
